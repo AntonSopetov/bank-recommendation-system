@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="1-create-rules-tables" author="AntonSopetov">
+        <createTable tableName="rules">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="product_name" type="VARCHAR(255)"/>
+            <column name="product_id" type="UUID"/>
+            <column name="product_text" type="VARCHAR(2000)"/>
+        </createTable>
+
+        <createTable tableName="query_conditions">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="query" type="VARCHAR(255)"/>
+            <column name="negate" type="BOOLEAN"/>
+            <column name="rule_id" type="UUID">
+                <constraints foreignKeyName="fk_condition_rule" referencedTableName="rules" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="condition_arguments">
+            <column name="condition_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="argument" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
