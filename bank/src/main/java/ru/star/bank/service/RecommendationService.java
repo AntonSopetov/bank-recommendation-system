@@ -1,5 +1,7 @@
 package ru.star.bank.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.star.bank.dto.*;
@@ -13,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class RecommendationService {
+
+    private static final Logger log = LoggerFactory.getLogger(RecommendationService.class);
 
     private final List<RecommendationRuleSet> staticRules;
     private final RuleRepository ruleRepository;
@@ -69,9 +73,14 @@ public class RecommendationService {
                     double withdraw = recommendationRepository.getTransactionSum(userId, ProductType.valueOf(args.get(0)), TransactionType.WITHDRAW);
                     res = compareValues(deposit, withdraw, args.get(1));
                 }
+                default -> log.warn("Неизвестный тип динамического запроса: {}", condition.getQuery());
             }
-        } catch (Exception e) {
+        } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
+            log.error("Ошибка в структуре аргументов динамического правила ID {}: {}", condition.getId(), e.getMessage());
             return false;
+        } catch (Exception e) {
+            log.error("Критический сбой при вычислении правила пользователя {}: ", userId, e);
+            throw e;
         }
         return condition.isNegate() ? !res : res;
     }

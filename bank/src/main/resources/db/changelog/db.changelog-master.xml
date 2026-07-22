@@ -26,9 +26,10 @@
             </column>
         </createTable>
 
+        <!-- Вот здесь добавлена строгая связь аргументов с условием, как просил Илья -->
         <createTable tableName="condition_arguments">
             <column name="condition_id" type="UUID">
-                <constraints nullable="false"/>
+                <constraints nullable="false" foreignKeyName="fk_argument_condition" referencedTableName="query_conditions" referencedColumnNames="id"/>
             </column>
             <column name="argument" type="VARCHAR(255)"/>
         </createTable>
