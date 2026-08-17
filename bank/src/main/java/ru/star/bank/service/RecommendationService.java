@@ -30,6 +30,13 @@ public class RecommendationService {
         this.recommendationRepository = recommendationRepository;
     }
 
+    /**
+     * Формирует список подходящих продуктов для конкретного пользователя.
+     * Сначала проверяются статические правила, затем загружаются динамические.
+     *
+     * @param userId уникальный идентификатор пользователя
+     * @return DTO с ответом, содержащим список доступных рекомендаций
+     */
     public RecommendationResponseDto getRecommendations(UUID userId) {
         List<RecommendationDto> result = new ArrayList<>();
 
@@ -62,8 +69,10 @@ public class RecommendationService {
 
         try {
             switch (condition.getQuery()) {
-                case "USER_OF" -> res = recommendationRepository.hasProductType(userId, ProductType.valueOf(args.get(0)));
-                case "ACTIVE_USER_OF" -> res = recommendationRepository.getTransactionCount(userId, ProductType.valueOf(args.get(0))) >= 5;
+                case "USER_OF" ->
+                        res = recommendationRepository.hasProductType(userId, ProductType.valueOf(args.get(0)));
+                case "ACTIVE_USER_OF" ->
+                        res = recommendationRepository.getTransactionCount(userId, ProductType.valueOf(args.get(0))) >= 5;
                 case "TRANSACTION_SUM_COMPARE" -> {
                     double sum = recommendationRepository.getTransactionSum(userId, ProductType.valueOf(args.get(0)), TransactionType.valueOf(args.get(1)));
                     res = compareValues(sum, Integer.parseInt(args.get(3)), args.get(2));
@@ -96,6 +105,12 @@ public class RecommendationService {
         };
     }
 
+    /**
+     * Создаёт новое динамическое правило в системе.
+     *
+     * @param dto данные создаваемого правила
+     * @return сохранённое правило с заполненным ID
+     */
     @Transactional
     public RuleDto createRule(RuleDto dto) {
         RuleEntity entity = new RuleEntity();
@@ -118,6 +133,11 @@ public class RecommendationService {
         return dto;
     }
 
+    /**
+     * Возвращает список всех зарегистрированных динамических правил.
+     *
+     * @return DTO со списком правил
+     */
     public RuleListResponseDto getAllRules() {
         List<RuleDto> list = ruleRepository.findAll().stream().map(e -> new RuleDto(
                 e.getId(), e.getProductName(), e.getProductId(), e.getProductText(),
@@ -126,6 +146,11 @@ public class RecommendationService {
         return new RuleListResponseDto(list);
     }
 
+    /**
+     * Удаляет динамическое правило по его идентификатору.
+     *
+     * @param id уникальный идентификатор правила
+     */
     @Transactional
     public void deleteRule(UUID id) {
         ruleRepository.deleteById(id);

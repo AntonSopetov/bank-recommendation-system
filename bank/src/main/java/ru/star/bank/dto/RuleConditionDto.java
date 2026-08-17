@@ -7,7 +7,8 @@ public class RuleConditionDto {
     private List<String> arguments;
     private boolean negate;
 
-    public RuleConditionDto() {}
+    public RuleConditionDto() {
+    }
 
     public RuleConditionDto(String query, List<String> arguments, boolean negate) {
         this.query = query;
@@ -15,12 +16,27 @@ public class RuleConditionDto {
         this.negate = negate;
     }
 
-    public String getQuery() { return query; }
-    public void setQuery(String query) { this.query = query; }
+    public String getQuery() {
+        return query;
+    }
 
-    public List<String> getArguments() { return arguments; }
-    public void setArguments(List<String> arguments) { this.arguments = arguments; }
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
-    public boolean isNegate() { return negate; }
-    public void setNegate(boolean negate) { this.negate = negate; }
+    public List<String> getArguments() {
+        return arguments;
+    }
+
+    public void setArguments(List<String> arguments) {
+        this.arguments = arguments;
+    }
+
+    public boolean isNegate() {
+        return negate;
+    }
+
+    public void setNegate(boolean negate) {
+        this.negate = negate;
+    }
 }

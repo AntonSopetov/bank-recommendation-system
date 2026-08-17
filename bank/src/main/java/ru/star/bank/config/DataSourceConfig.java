@@ -1,6 +1,7 @@
 package ru.star.bank.config;
 
 import javax.sql.DataSource;
+
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
