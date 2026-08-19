@@ -13,7 +13,7 @@
 
 ## Ссылки на документацию (Project Wiki)
 Для успешной защиты курсовой работы вся аналитическая и техническая документация вынесена в репозиторий Wiki:
-* [Главная страница проекта](https://github.com)
-* [Бизнес-требования (User Stories и Use Case)](https://github.com/Requirements)
-* [Архитектура системы (Диаграммы Компонентов и Деятельности)](https://github.com/Architecture)
-* [Инструкция по развертыванию (Deployment Guide)](https://github.com/Deployment)
+* [Главная страница проекта](https://github.com/AntonSopetov/bank-recommendation-system/wiki)
+* [Бизнес-требования (User Stories и Use Case)](https://github.com/AntonSopetov/bank-recommendation-system/wiki/Requirements)
+* [Архитектура системы (Диаграммы Компонентов и Деятельности)](https://github.com/AntonSopetov/bank-recommendation-system/wiki/Architecture)
+* [Инструкция по развёртыванию (Deployment Guide)](https://github.com/AntonSopetov/bank-recommendation-system/wiki/Deployment)
