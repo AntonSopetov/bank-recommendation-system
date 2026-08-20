@@ -9,6 +9,11 @@ public class RuleListResponseDto {
         this.data = data;
     }
 
-    public List<RuleDto> getData() { return data; }
-    public void setData(List<RuleDto> data) { this.data = data; }
+    public List<RuleDto> getData() {
+        return data;
+    }
+
+    public void setData(List<RuleDto> data) {
+        this.data = data;
+    }
 }

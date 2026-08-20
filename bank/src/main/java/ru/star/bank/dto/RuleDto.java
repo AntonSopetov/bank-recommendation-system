@@ -1,6 +1,7 @@
 package ru.star.bank.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,8 @@ public class RuleDto {
     @JsonProperty("rule")
     private List<RuleConditionDto> rule;
 
-    public RuleDto() {}
+    public RuleDto() {
+    }
 
     public RuleDto(UUID id, String productName, UUID productId, String productText, List<RuleConditionDto> rule) {
         this.id = id;
@@ -25,18 +27,43 @@ public class RuleDto {
         this.rule = rule;
     }
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public UUID getId() {
+        return id;
+    }
 
-    public String getProductName() { return productName; }
-    public void setProductName(String productName) { this.productName = productName; }
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
-    public UUID getProductId() { return productId; }
-    public void setProductId(UUID productId) { this.productId = productId; }
+    public String getProductName() {
+        return productName;
+    }
 
-    public String getProductText() { return productText; }
-    public void setProductText(String productText) { this.productText = productText; }
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
-    public List<RuleConditionDto> getRule() { return rule; }
-    public void setRule(List<RuleConditionDto> rule) { this.rule = rule; }
+    public UUID getProductId() {
+        return productId;
+    }
+
+    public void setProductId(UUID productId) {
+        this.productId = productId;
+    }
+
+    public String getProductText() {
+        return productText;
+    }
+
+    public void setProductText(String productText) {
+        this.productText = productText;
+    }
+
+    public List<RuleConditionDto> getRule() {
+        return rule;
+    }
+
+    public void setRule(List<RuleConditionDto> rule) {
+        this.rule = rule;
+    }
 }

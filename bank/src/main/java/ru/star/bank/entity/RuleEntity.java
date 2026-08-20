@@ -1,6 +1,7 @@
 package ru.star.bank.entity;
 
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -24,18 +25,43 @@ public class RuleEntity {
     @OneToMany(mappedBy = "ruleEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<QueryConditionEntity> rule = new ArrayList<>();
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public UUID getId() {
+        return id;
+    }
 
-    public String getProductName() { return productName; }
-    public void setProductName(String productName) { this.productName = productName; }
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
-    public UUID getProductId() { return productId; }
-    public void setProductId(UUID productId) { this.productId = productId; }
+    public String getProductName() {
+        return productName;
+    }
 
-    public String getProductText() { return productText; }
-    public void setProductText(String productText) { this.productText = productText; }
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
-    public List<QueryConditionEntity> getRule() { return rule; }
-    public void setRule(List<QueryConditionEntity> rule) { this.rule = rule; }
+    public UUID getProductId() {
+        return productId;
+    }
+
+    public void setProductId(UUID productId) {
+        this.productId = productId;
+    }
+
+    public String getProductText() {
+        return productText;
+    }
+
+    public void setProductText(String productText) {
+        this.productText = productText;
+    }
+
+    public List<QueryConditionEntity> getRule() {
+        return rule;
+    }
+
+    public void setRule(List<QueryConditionEntity> rule) {
+        this.rule = rule;
+    }
 }

@@ -1,6 +1,7 @@
 package ru.star.bank.entity;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -24,18 +25,43 @@ public class QueryConditionEntity {
     @JoinColumn(name = "rule_id")
     private RuleEntity ruleEntity;
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public UUID getId() {
+        return id;
+    }
 
-    public String getQuery() { return query; }
-    public void setQuery(String query) { this.query = query; }
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
-    public List<String> getArguments() { return arguments; }
-    public void setArguments(List<String> arguments) { this.arguments = arguments; }
+    public String getQuery() {
+        return query;
+    }
 
-    public boolean isNegate() { return negate; }
-    public void setNegate(boolean negate) { this.negate = negate; }
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
-    public RuleEntity getRuleEntity() { return ruleEntity; }
-    public void setRuleEntity(RuleEntity ruleEntity) { this.ruleEntity = ruleEntity; }
+    public List<String> getArguments() {
+        return arguments;
+    }
+
+    public void setArguments(List<String> arguments) {
+        this.arguments = arguments;
+    }
+
+    public boolean isNegate() {
+        return negate;
+    }
+
+    public void setNegate(boolean negate) {
+        this.negate = negate;
+    }
+
+    public RuleEntity getRuleEntity() {
+        return ruleEntity;
+    }
+
+    public void setRuleEntity(RuleEntity ruleEntity) {
+        this.ruleEntity = ruleEntity;
+    }
 }
